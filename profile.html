@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>个人中心 - 趣玩星球</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content-area">
+            <!-- 用户信息卡片 -->
+            <div class="profile-card">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="https://s1.imagehub.cc/images/2024/11/08/517863d36cc7513386d28d457636008d.jpeg" alt="用户头像" id="profileAvatar">
+                    </div>
+                    <div class="profile-info">
+                        <div class="username-container">
+                            <h3 id="profileUsername">未登录</h3>
+                            <div class="member-badge" id="memberBadge">
+                                <img src="https://s1.imagehub.cc/images/2024/11/29/ecafb336a71e77e825e868271f9063a2.png" alt="会员图标">
+                            </div>
+                        </div>
+                        <div class="user-id-container">
+                            <span id="profileId">ID: --</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 添加钱包和优惠券区域 -->
+            <div class="assets-menu">
+                <div class="assets-item" onclick="window.location.href='wallet.html'">
+                    <div class="assets-icon">
+                        <img src="https://s1.imagehub.cc/images/2024/11/29/bdc4b1617fa5c54f3d6880d4234edca6.png" alt="钱包图标" style="width: 32px; height: 32px;">
+                    </div>
+                    <div class="assets-info">
+                        <span class="assets-label">钱包余额</span>
+                        <span class="assets-value" id="walletBalance">￥0.00</span>
+                    </div>
+                </div>
+                <div class="assets-item">
+                    <div class="assets-icon" style="background: none;">
+                        <img src="https://s1.imagehub.cc/images/2024/11/29/307121d9cdbf245eb721f172c90a969c.png" alt="优惠券图标" style="width: 32px; height: 32px;">
+                    </div>
+                    <div class="assets-info">
+                        <span class="assets-label">优惠券</span>
+                        <span class="assets-value" id="couponCount">0张</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 功能菜单 -->
+            <div class="profile-menu">
+                <div class="menu-section">
+                    <h4>我的订单</h4>
+                    <div class="order-stats">
+                        <div class="order-stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>待付款</span>
+                        </div>
+                        <div class="order-stat-item">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>进行中</span>
+                        </div>
+                        <div class="order-stat-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>已完成</span>
+                        </div>
+                        <div class="order-stat-item">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>待评价</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <div class="menu-item" onclick="window.location.href='all-orders.html'">
+                        <img src="https://s1.imagehub.cc/images/2024/11/30/d58ab33da941b4b9b62db104ea2b389f.png" alt="全部订单" style="width: 24px; height: 24px;">
+                        <span>全部订单</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="menu-item" id="verifyPlaymateBtn">
+                        <div class="circle-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <span>陪玩认证</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="menu-item" id="serviceBtn">
+                        <div class="circle-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <span>联系客服</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>首页</span>
+            </a>
+            <a href="play.html" class="nav-item">
+                <i class="fas fa-gamepad"></i>
+                <span>玩乐</span>
+            </a>
+            <a href="partner.html" class="nav-item">
+                <i class="fas fa-user-friends"></i>
+                <span>搭子</span>
+            </a>
+            <a href="chat.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>聊天</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <i class="fas fa-user"></i>
+                <span>我的</span>
+            </a>
+        </nav>
+
+        <!-- 添加设置菜单弹窗 -->
+        <div class="settings-modal" id="settingsModal">
+            <div class="settings-container">
+                <div class="settings-header">
+                    <h3>设置</h3>
+                    <i class="fas fa-times" id="closeSettings"></i>
+                </div>
+                <div class="settings-menu">
+                    <div class="settings-item" id="editProfileItem">
+                        <i class="fas fa-user-edit"></i>
+                        <span>修改资料</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="settings-item" id="accountSecurityItem">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>账号安全</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="settings-item" id="clearCacheItem">
+                        <i class="fas fa-broom"></i>
+                        <span>清理缓存</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="settings-item" id="checkUpdateItem">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>版本更新</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="settings-item" id="aboutUsItem">
+                        <i class="fas fa-info-circle"></i>
+                        <span>关于我们</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 修改弹窗部分 -->
+        <div class="wallet-modal" id="walletModal">
+            <div class="wallet-container">
+                <div class="wallet-header">
+                    <h3>我的钱包</h3>
+                    <i class="fas fa-times" id="closeWallet"></i>
+                </div>
+                <div class="wallet-content">
+                    <div class="wallet-balance-card">
+                        <p>账户余额</p>
+                        <h2 id="modalWalletBalance">￥0.00</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="profile.js"></script>
+    <script>
+        // 显示订单列表的函数
+        function displayOrders() {
+            const orderList = document.getElementById('orderList');
+            const orders = JSON.parse(localStorage.getItem('orderHistory')) || [];
+            
+            if (orders.length === 0) {
+                orderList.innerHTML = '<div style="text-align: center; padding: 20px; color: #999;">暂无订单</div>';
+                return;
+            }
+
+            orderList.innerHTML = orders.map(order => `
+                <div class="order-item">
+                    <div class="order-header">
+                        <span class="order-number">订单号：${order.orderId}</span>
+                        <span class="order-status ${order.paymentStatus === '支付成功' ? 'success' : 'fail'}">
+                            ${order.paymentStatus}
+                        </span>
+                    </div>
+                    <div class="order-content">
+                        ${order.service} - ${order.playerName}
+                    </div>
+                    <div class="order-footer">
+                        <span>${new Date(order.paymentTime).toLocaleString()}</span>
+                        <span class="order-price">${order.totalPrice}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 页面加载时显示订单
+        window.addEventListener('load', displayOrders);
+    </script>
+    <style>
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #fff;
+            margin-bottom: 1px;
+            cursor: pointer;
+        }
+
+        .menu-item img {
+            margin-right: 12px;
+        }
+
+        .menu-item span {
+            flex: 1;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .menu-item i.fa-chevron-right {
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</body>
+</html> 
